@@ -3,7 +3,7 @@
 ### Additional Notes :
 :loudspeaker: [Please find a brief video of this app](https://drive.google.com/file/d/14Ra52X4d1Ne17f-7hYPrXLUgk1eJNQke/view)  , and don't overlook the option to enhance video quality in the parameters. This not only boosts the overall quality of the app but also ensures a more immersive viewing experience :smiley:
 
-- To run this code, just download the repository, open it in vs code and click on Go live 
+- To run this code, just download the repository, open it in vs code and click on Go live. But Before, please add the chatgpt api key I have sent you on linkedin in the 'assets/js/main.js' in the very beginning. I don't foresee any issues arising, especially considering that I've already paid $7 for the API. However, if you do encounter any problems, please feel free to reach out so I can create a new API key.
 
 ## 🚀 Why did I picked the second project :question:
 I opted for the second challenge as it presents an enticing level of complexity. As someone who thrives on challenges :muscle:, it have waken my inner drive to deliver my best and produce high-quality work. 

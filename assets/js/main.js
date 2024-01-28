@@ -4,7 +4,7 @@
 const weatherApiKey = 'a9ac20c2f4msh7e4f73e040b99d8p1eb50cjsne5e5a702db19'; // Link of Weather API : https://rapidapi.com/worldapi/api/open-weather13
                                                                             // Link of reverse geocoding API : https://rapidapi.com/Noggle/api/reverse-geocoding-and-geolocation-service
 const imageAndMapApiKey = 'a80ab969d52173044f8c616ece4c55d5042df70c'; // Link of API : https://serper.dev/
-
+const openAIkey; //Please add the key here
 
 let chagptInput;
 let chatGptContext = []; 
@@ -139,7 +139,7 @@ async function fetchData(url, data) {
         headers: {
             'Content-Type': 'application/json',
             // Adding OpenAI API key here
-            'Authorization': 'Bearer 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',
+            'Authorization': 'Bearer ${openAIKey}',
         },
         body: JSON.stringify(data),
     });
@@ -151,7 +151,7 @@ async function getChatGptResponse(userMessage, systemPrompts = []) {
 
     
     const apiEndpoint = 'https://api.openai.com/v1/chat/completions';
-    const apiKey = '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';
+    const apiKey = openAIkey;
 
     const openaiData = {
         model: 'gpt-3.5-turbo',
@@ -624,7 +624,6 @@ main();
 // async function generateQuestionWithGPT() {
 //     // Simulate GPT response
 //     const apiEndpoint = 'https://api.openai.com/v1/chat/completions';
-//     const apiKey = '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';
 //     const prompt = 'I am developing a personalized activity recommendation app called Local Explorer. The app uses real-time geolocation and weather data to suggest activities based on the user\'s preferences and current circumstances. Generate a question to gather additional information from the user for enhancing their experience. PS: avoid these questions: ' + askedQuestions.join(', ');    // Your GPT prompt
 //     const openaiData = {
 //         model: 'gpt-3.5-turbo',

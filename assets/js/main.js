@@ -36,7 +36,7 @@ async function getCachedWeatherForCity(cityName) {
 /***************** RETRIEVING THE CITY OF THE NAVIGATOR ****************** */
 async function getCityFromCoords(latitude, longitude) {
     console.log(`Hello I am in getCityFromCoords()  `);
-    const apiKey = getCityFromCoordsKey ;
+    const apiKey = weatherApiKey;
 
     const options = {
         method: 'GET',

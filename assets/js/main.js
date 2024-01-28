@@ -4,7 +4,7 @@
 const weatherApiKey = 'a9ac20c2f4msh7e4f73e040b99d8p1eb50cjsne5e5a702db19'; // Link of Weather API : https://rapidapi.com/worldapi/api/open-weather13
                                                                             // Link of reverse geocoding API : https://rapidapi.com/Noggle/api/reverse-geocoding-and-geolocation-service
 const imageAndMapApiKey = 'a80ab969d52173044f8c616ece4c55d5042df70c'; // Link of API : https://serper.dev/
-const openAIkey; //Please add the key here
+const openGPTAPI = ''; //Please add the key here
 
 let chagptInput;
 let chatGptContext = []; 
@@ -139,7 +139,7 @@ async function fetchData(url, data) {
         headers: {
             'Content-Type': 'application/json',
             // Adding OpenAI API key here
-            'Authorization': 'Bearer ${openAIKey}',
+            'Authorization': `Bearer ${openGPTAPI}`,
         },
         body: JSON.stringify(data),
     });
@@ -151,7 +151,6 @@ async function getChatGptResponse(userMessage, systemPrompts = []) {
 
     
     const apiEndpoint = 'https://api.openai.com/v1/chat/completions';
-    const apiKey = openAIkey;
 
     const openaiData = {
         model: 'gpt-3.5-turbo',
@@ -166,28 +165,42 @@ async function getChatGptResponse(userMessage, systemPrompts = []) {
   
 
     try {
-         // Calling OpenAI API
-         const openaiResponse = await fetchData(apiEndpoint, openaiData, {
-            'Authorization': `Bearer ${apiKey}`,
+        // Calling OpenAI API
+        const openaiResponse = await fetchData(apiEndpoint, openaiData, {
+             'Authorization': `Bearer ${openGPTAPI}`,
         });
-
-        const openaiGptResponse = openaiResponse.choices[0].message.content;
-
-        console.log('OpenAI Response:', openaiGptResponse);
-
-        // Extracting title and description based on OpenAI API response structure
-        const title = openaiGptResponse.match(/Title:\s*(.*)/)[1];
-        const description = openaiGptResponse.match(/Description:\s*(.*)/)[1];
-
-
-        console.log('Title:', title);
-        console.log('Description:', description);
-
-        // Adding user and assistant messages to the conversation history
-        addToChatHistory('user', userMessage);
-        addToChatHistory('assistant', openaiGptResponse);
-
-        return [title, description];
+    
+        // Check if choices array exists and is not empty
+        if (openaiResponse.choices && openaiResponse.choices.length > 0) {
+            const openaiGptResponse = openaiResponse.choices[0].message.content;
+    
+            console.log('OpenAI Response:', openaiGptResponse);
+    
+            // Extracting title and description based on OpenAI API response structure
+            const titleMatch = openaiGptResponse.match(/Title:\s*(.*)/);
+            const descriptionMatch = openaiGptResponse.match(/Description:\s*(.*)/);
+    
+            // Check if title and description matches were found
+            if (titleMatch && descriptionMatch) {
+                const title = titleMatch[1];
+                const description = descriptionMatch[1];
+    
+                console.log('Title:', title);
+                console.log('Description:', description);
+    
+                // Adding user and assistant messages to the conversation history
+                addToChatHistory('user', userMessage);
+                addToChatHistory('assistant', openaiGptResponse);
+    
+                return [title, description];
+            } else {
+                console.error('Title or description not found in OpenAI response.');
+                return null;
+            }
+        } else {
+            console.error('No choices found in OpenAI response.');
+            return null;
+        }
     } catch (error) {
         console.error('Error calling OpenAI API:', error);
         // Handling error as needed

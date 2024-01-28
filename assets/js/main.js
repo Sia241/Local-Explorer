@@ -111,8 +111,8 @@ async function getWeatherForCity(cityName) {
 const formattedContent = `I am working on local Explorer, a personalized activity recommendation app that leverages real-time geolocation and weather data to suggest tailored experiences.So  I am relying on you chatGPT  to suggest me activities both indoor and outdoor like visit a nearer specific restaurant or movie theater, or maybe suggest to just stay at home and watch netflix (i insist for you to suggest me an activity like  watch netflix at home).
 and please don't be vague, give me specific place in case you re suggesting outdoor activity like the name of the restaurant or the name of the nearest movie teather. Imprtant : specify the place in the title (like 'Visiting Restaurant Tasty' as a title) and don't forget indoor activities like watching netflix and don't specify if its an outdoor or indoor activity.
 So now Given the weather data for ${cityName}:
-- Temperature: 15 degrees
-- Conditions: raining
+- Temperature:  ${temperature}
+- Conditions:  ${conditions}
 - Wind Speed: ${windSpeed}
 - Humidity: ${humidity}
 - Time: ${new Date().toLocaleString()}

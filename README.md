@@ -59,7 +59,7 @@ I opted for the second challenge as it presents an enticing level of complexity.
 - Image Retrieval: Additionally, the Serper API provides functionality for retrieving relevant images based on search queries. In my application, this feature is utilized to fetch images related to the suggested activities. These images enhance the user experience by providing visual context for the recommended activities, making them more appealing and informative.
 
 ## Libraries Used For This Project :
-[Leaflet.js](https://leafletjs.com/) is a lightweight and versatile JavaScript library for interactive maps. It's beneficial for your application because:
+[Leaflet.js](https://leafletjs.com/) is a lightweight and versatile JavaScript library for interactive maps. It's beneficial for my application because:
 
 - Ease of Use: Leaflet.js is easy to integrate and use, making it accessible for developers of all levels. Its simple and intuitive API allows you to quickly create interactive maps with minimal effort.
 
